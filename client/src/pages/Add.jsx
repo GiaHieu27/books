@@ -24,11 +24,7 @@ const Add = () => {
       },
       body: JSON.stringify(book),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-        navigate('/');
-      })
+      .then(() => navigate('/'))
       .catch((err) => setError(err));
   };
 
