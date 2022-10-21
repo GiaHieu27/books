@@ -11,6 +11,14 @@ function Books() {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleDelete = (bookId) => {
+    fetch(`http://localhost:4000/books/${bookId}`, {
+      method: 'DELETE',
+    })
+      .then(() => window.location.reload())
+      .catch((err) => setError(err));
+  };
+
   return (
     <div>
       <h1>Hiu Book Shop</h1>
@@ -21,9 +29,9 @@ function Books() {
             <h2>{book.title}</h2>
             <p>{book.desc}</p>
             <span>${book.price}</span>
-            {/* <button className="delete" onClick={() => handleDelete(book.id)}>
+            <button className="delete" onClick={() => handleDelete(book.id)}>
               Delete
-            </button> */}
+            </button>
             <button className="update">
               <Link
                 to={`/update/${book.id}`}
